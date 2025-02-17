@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Logo from "../../assets/logo.png";
+import { useDispatch } from "react-redux";
+import { admin_login } from '../../Store/Reducers/authReducer';
 const AdminLogin = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -15,7 +18,8 @@ const AdminLogin = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(state);
+    dispatch(admin_login(state));
+    //console.log(state);
   };
 
   return (
@@ -24,11 +28,7 @@ const AdminLogin = () => {
         <div className="bg-[#6f68d1] p-4 rounded-md">
           <div className="h-[70px] flex justify-center items-center">
             <div className="w-[180px] h-[50px]">
-              <img
-                className="w-full h-full"
-                src={Logo}
-                alt="image"
-              />
+              <img className="w-full h-full" src={Logo} alt="image" />
             </div>
           </div>
 
